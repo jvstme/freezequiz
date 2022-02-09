@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ slide.question }}</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js" defer></script>
+</head>
+
+<body>
+<article id="mainContent">
+
+	<h1 id="quizQuestion">{{ slide.question }}</h1>
+
+	<video id="quizPlayer">
+		<source src="{{ slide.video }}#t={{ slide.timecode }}">
+	</video>
+
+	<div id="navBar">
+		<a id="prevButton" class="navButton" href="{{ slide.prev_id }}.html">
+			&lt;
+		</a>
+
+		<div id="answerBox" class="hidden transparent">
+			{% for answer_key, answer_value in slide.answer_items %}
+			<p class="answerLine">
+				<span class="answerKey">{{ answer_key }}: </span>
+				<span class="answerValue">{{ answer_value }}</span>
+			</p>
+			{% endfor %}
+		</div>
+
+		<a id="checkButton" class="navButton">{{ slide.check_button }}</a>
+
+		<a id="nextButton" class="navButton" href="{{ slide.next_id }}.html">
+			&gt;
+		</a>
+	</nav>
+
+</article>
+</body>
+
+</html>

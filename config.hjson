@@ -1,0 +1,53 @@
+/** FreezeQuiz configuration
+ *
+ * Each question of a FreezeQuiz is displayed on a "slide". You can configure
+ * individual slides by setting their parameters in the 'slides' section of this
+ * file. Parameters that need to be shared between slides can be defined in the
+ * 'defaults' section.
+ *
+ * Available parameters:
+ *      question       Question text at the top of the slide.
+ *      check_button   Text to be displayed on the answer check button.
+ *      answer_keys    List of keys in the answer section to open each line.
+ *      answer_values  List of lines in the answer section.
+ *      video          Path to the video file, absolute or relative to OUT_DIR.
+ *      timecode       Timecode of the freeze-frame in seconds. Floating points
+ *                     can be used.
+ *
+ * All the parameters need to be defined for each slide, either in its
+ * individual configuration or in the defaults section. Slide-specific
+ * parameters can override the defaults.
+ */
+
+{
+    defaults: {
+        question: What's in the freeze-frame?
+        check_button: Check the answer
+        answer_keys: [
+            Answer
+            Explainer
+        ]
+    }
+
+    slides: [
+        {
+            video: /path/to/file.mp4
+            timecode: 12.3
+            answer_values:
+            [
+                Example answer
+                Example explainer
+            ]
+        }
+        {
+            video: ../relative/path/to/file.webm
+            timecode: 32.1
+            answer_values:
+            [
+                Walnuts
+                A walnut can be recognized by the unusual shape of its kernel
+            ]
+        }
+        // define more slides here
+    ]
+}
