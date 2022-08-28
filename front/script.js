@@ -3,11 +3,12 @@ let answerGiven = false;
 const quizPlayer = document.getElementById("quizPlayer");
 const checkButton = document.getElementById("checkButton");
 const answerBox = document.getElementById("answerBox");
-const answer1 = document.getElementById("answer1");
-const answer2 = document.getElementById("answer2")
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
 
 checkButton.addEventListener("click", checkAnswer);
 quizPlayer.addEventListener("click", triggerVideo);
+document.addEventListener("keydown", handleKeydown);
 
 function checkAnswer() {
     answerGiven = true;
@@ -30,5 +31,21 @@ function triggerVideo() {
         quizPlayer.play()
     } else {
         quizPlayer.pause();
+    }
+}
+
+function handleKeydown(e) {
+    const key = e.key;
+
+    if (key === "ArrowLeft") {
+        prevButton.click();
+    } else if (key === "ArrowRight") {
+        nextButton.click();
+    } else if (key === " ") {
+        if (answerGiven) {
+            triggerVideo();
+        } else {
+            checkAnswer();
+        }
     }
 }
